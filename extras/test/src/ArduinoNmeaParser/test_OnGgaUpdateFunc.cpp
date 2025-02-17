@@ -69,7 +69,7 @@ void onGgaUpdate(nmea::GgaData const data)
 
 TEST_CASE("Testing execution of OnGgaUpdateFunc when a full GxGGA message has been received", "[OnGgaUpdateFunc-01]")
 {
-  ArduinoNmeaParser parser(nullptr, onGgaUpdate);
+  ArduinoNmeaParser parser(nullptr, onGgaUpdate, nullptr);
   std::string const GPGGA = "$GPGGA,111908.952,4838.0060,N,01301.5895,E,1,05,2.4,454.7,M,46.6,M,0.0,0000*7A\r\n";
   encode(parser, GPGGA);
   REQUIRE(on_gga_update_called == true);

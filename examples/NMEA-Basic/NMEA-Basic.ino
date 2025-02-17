@@ -31,7 +31,7 @@ void onGgaUpdate(nmea::GgaData const);
  * GLOBAL VARIABLES
  **************************************************************************************/
 
-ArduinoNmeaParser parser(onRmcUpdate, onGgaUpdate);
+ArduinoNmeaParser parser(onRmcUpdate, onGgaUpdate, nullptr); //GST
 
 /**************************************************************************************
  * SETUP/LOOP

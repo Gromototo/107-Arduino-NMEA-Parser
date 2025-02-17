@@ -27,6 +27,7 @@
 
 typedef std::function<void(nmea::RmcData const)> OnRmcUpdateFunc;
 typedef std::function<void(nmea::GgaData const)> OnGgaUpdateFunc;
+typedef std::function<void(nmea::GstData const)> OnGstUpdateFunc;
 
 /**************************************************************************************
  * CLASS DECLARATION
@@ -38,7 +39,8 @@ class ArduinoNmeaParser
 public:
 
   ArduinoNmeaParser(OnRmcUpdateFunc on_rmc_update,
-                    OnGgaUpdateFunc on_gga_update);
+                    OnGgaUpdateFunc on_gga_update,
+                    OnGstUpdateFunc on_gst_update);
 
 
   void encode(char const c);
@@ -46,6 +48,7 @@ public:
 
   inline const nmea::RmcData rmc() const { return _rmc; }
   inline const nmea::GgaData gga() const { return _gga; }
+  inline const nmea::GstData gst() const { return _gst; }
 
 
   enum class Error { None, Checksum };
@@ -63,8 +66,11 @@ private:
   size_t _parser_buf_elems;
   nmea::RmcData _rmc;
   nmea::GgaData _gga;
+  nmea::GstData _gst;
+
   OnRmcUpdateFunc _on_rmc_update;
   OnGgaUpdateFunc _on_gga_update;
+  OnGstUpdateFunc _on_gst_update;
 
   bool isParseBufferFull();
   void addToParserBuffer(char const c);
@@ -73,6 +79,8 @@ private:
   void terminateParserBuffer();
   void parseGxRMC();
   void parseGxGGA();
+  void parseGxGST();
+
 };
 
 #endif /* ARDUINO_MTK3333_NMEA_PARSER_H_ */

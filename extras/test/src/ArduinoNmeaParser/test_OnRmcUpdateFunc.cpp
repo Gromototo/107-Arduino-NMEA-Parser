@@ -70,7 +70,7 @@ void onRmcUpdate(nmea::RmcData const data)
 
 TEST_CASE("Testing execution of OnRmcUpdateFunc when a full GxRMC message has been received", "[OnRmcUpdateFunc-01]")
 {
-  ArduinoNmeaParser parser(onRmcUpdate, nullptr);
+  ArduinoNmeaParser parser(onRmcUpdate, nullptr, nullptr);
   std::string const GPRMC = ("$GPRMC,052856.105,A,5230.874,N,01321.056,E,085.7,206.4,080720,000.0,W*78\r\n");
   encode(parser, GPRMC);
   REQUIRE(on_rmc_update_called == true);
