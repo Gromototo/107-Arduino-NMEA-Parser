@@ -28,10 +28,14 @@ set(TEST_SRCS
   src/test_checksum.cpp
   src/test_GxGGA.cpp
   src/test_GxRMC.cpp
+  src/test_GxGST.cpp
+
   src/test_Types.cpp
   src/test_main.cpp
   src/test_gga.cpp
   src/test_rmc.cpp
+  src/test_gst.cpp
+
 
   ../../src/nmea/util/checksum.cpp
   ../../src/nmea/util/common.cpp
@@ -41,7 +45,12 @@ set(TEST_SRCS
   ../../src/nmea/GxGGA.cpp
   ../../src/nmea/GxRMC.cpp
   ../../src/nmea/Types.cpp
+  ../../src/nmea/GxGST.cpp
+  ../../src/nmea/util/gst.cpp
   ../../src/ArduinoNmeaParser.cpp
+
+
+
 )
 
 ##########################################################################
